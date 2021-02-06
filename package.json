@@ -1,6 +1,6 @@
 {
   "name": "rmidi",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "./src/index.ts",
   "description": "A web MIDI utility package using rx.",
   "repository": {
