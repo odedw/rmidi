@@ -1,5 +1,5 @@
 {
-  "name": "@odedw/rmidi",
+  "name": "rmidi",
   "version": "1.0.0",
   "main": "./src/index.ts",
   "scripts": {
