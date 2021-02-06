@@ -1,5 +1,5 @@
-import WebMidi, { Output as MidiOutput } from 'webmidi';
-import init from './initWebMidi';
+import WebMidi, { Output as MidiOutput } from "webmidi";
+import init from "./initWebMidi";
 
 export class Output {
   midiOutput?: MidiOutput;
@@ -13,18 +13,16 @@ export class Output {
   }
 
   sendNote() {
-    this.midiOutput?.playNote('C4', 1, {
+    this.midiOutput?.playNote("C4", 1, {
       // duration: 200,
     });
   }
 
   noteOff() {
-    this.midiOutput?.stopNote('C4', 1);
+    this.midiOutput?.stopNote("C4", 1);
   }
   panic() {
-    console.log('===========================');
-
     this.midiOutput?.sendReset();
-    this.midiOutput?.stopNote('C4');
+    this.midiOutput?.stopNote("C4");
   }
 }
