@@ -1,15 +1,15 @@
 {
   "name": "rmidi",
   "version": "1.0.2",
-  "main": "./src/index.ts",
+  "main": "./dist/index.js",
   "description": "A web MIDI utility package using rx.",
   "repository": {
     "type": "git",
     "url": "https://github.com/odedw/rmidi.git"
   },
   "scripts": {
-    "typecheck": "tsc",
-    "prepublishOnly": "npm run typecheck && npm version patch"
+    "build": "tsc",
+    "prepublishOnly": "npm run build && npm version patch"
   },
   "author": "",
   "license": "ISC",
