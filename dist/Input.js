@@ -22,6 +22,7 @@ class Input {
     constructor(name) {
         this.subjects = {
             noteOn: new rxjs_1.Subject(),
+            noteOff: new rxjs_1.Subject(),
             cc: new rxjs_1.Subject(),
             clock: new rxjs_1.Subject(),
         };
@@ -34,6 +35,9 @@ class Input {
         this.midiInput.addListener("noteon", "all", (e) => {
             // log.debug(`channel: ${e.channel}, note: ${e.note.name}${e.note.octave}`);
             this.subjects.noteOn.next(e);
+        });
+        this.midiInput.addListener("noteoff", "all", (e) => {
+            this.subjects.noteOff.next(e);
         });
         this.midiInput.addListener("controlchange", "all", (e) => {
             this.subjects.cc.next(e);
@@ -50,6 +54,9 @@ class Input {
     }
     noteOn(note = "", channel = "all") {
         return this.subjects.noteOn.pipe(operators_1.filter((e) => MidiUtils_1.isMatch(e, note, channel)));
+    }
+    noteOff(note = "", channel = "all") {
+        return this.subjects.noteOff.pipe(operators_1.filter((e) => MidiUtils_1.isMatch(e, note, channel)));
     }
     cc(ccNumber, channel = "all") {
         return this.subjects.cc.pipe(operators_1.filter((e) => {
