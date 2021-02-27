@@ -5,6 +5,7 @@ import WebMidi, {
   IMidiChannel,
   InputEventControlchange,
   InputEventClock,
+  InputEventNoteoff,
 } from "webmidi";
 import { Observable, Subscription, Subject } from "rxjs";
 import { filter, bufferCount, pairwise, map } from "rxjs/operators";
@@ -14,6 +15,7 @@ export class Input {
   midiInput: MidiInput | undefined;
   private subjects = {
     noteOn: new Subject<InputEventNoteon>(),
+    noteOff: new Subject<InputEventNoteoff>(),
     cc: new Subject<InputEventControlchange>(),
     clock: new Subject<InputEventClock>(),
   };
@@ -30,6 +32,9 @@ export class Input {
     this.midiInput.addListener("noteon", "all", (e) => {
       // log.debug(`channel: ${e.channel}, note: ${e.note.name}${e.note.octave}`);
       this.subjects.noteOn.next(e);
+    });
+    this.midiInput.addListener("noteoff", "all", (e) => {
+      this.subjects.noteOff.next(e);
     });
     this.midiInput.addListener("controlchange", "all", (e) => {
       this.subjects.cc.next(e);
@@ -49,6 +54,13 @@ export class Input {
     channel: IMidiChannel = "all"
   ): Observable<InputEventNoteon> {
     return this.subjects.noteOn.pipe(filter((e) => isMatch(e, note, channel)));
+  }
+
+  noteOff(
+    note: string = "",
+    channel: IMidiChannel = "all"
+  ): Observable<InputEventNoteoff> {
+    return this.subjects.noteOff.pipe(filter((e) => isMatch(e, note, channel)));
   }
 
   cc(
