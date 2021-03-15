@@ -61,7 +61,7 @@ class Input {
     cc(ccNumber, channel = "all") {
         return this.subjects.cc.pipe(operators_1.filter((e) => {
             return ((channel === "all" || e.channel === channel) &&
-                e.controller.number === ccNumber);
+                (!ccNumber || e.controller.number === ccNumber));
         }));
     }
     ccTriger(ccNumber, threshold = 1, channel = "all") {

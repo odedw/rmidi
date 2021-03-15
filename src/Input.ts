@@ -64,14 +64,14 @@ export class Input {
   }
 
   cc(
-    ccNumber: number,
+    ccNumber?: number,
     channel: IMidiChannel = "all"
   ): Observable<InputEventControlchange> {
     return this.subjects.cc.pipe(
       filter((e) => {
         return (
           (channel === "all" || e.channel === channel) &&
-          e.controller.number === ccNumber
+          (!ccNumber || e.controller.number === ccNumber)
         );
       })
     );

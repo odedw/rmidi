@@ -7,7 +7,7 @@ export declare class Input {
     static create(name: string): Promise<Input>;
     noteOn(note?: string, channel?: IMidiChannel): Observable<InputEventNoteon>;
     noteOff(note?: string, channel?: IMidiChannel): Observable<InputEventNoteoff>;
-    cc(ccNumber: number, channel?: IMidiChannel): Observable<InputEventControlchange>;
+    cc(ccNumber?: number, channel?: IMidiChannel): Observable<InputEventControlchange>;
     ccTriger(ccNumber: number, threshold?: number, channel?: IMidiChannel): Observable<boolean>;
     ccBind<T>(ccNumber: number, key: keyof T, t: T, min?: number, max?: number, channel?: IMidiChannel): Subscription;
     clock(division?: number): Observable<InputEventClock[]>;
