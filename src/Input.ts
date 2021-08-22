@@ -1,4 +1,4 @@
-import init from "./initWebMidi";
+import { init } from "./initWebMidi";
 import WebMidi, {
   Input as MidiInput,
   InputEventNoteon,

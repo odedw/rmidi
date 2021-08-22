@@ -1,5 +1,5 @@
-import init from './initWebMidi';
-import WebMidi from 'webmidi';
+import { init } from "./initWebMidi";
+import WebMidi from "webmidi";
 
 export function listOutputs() {
   init().then(() => {

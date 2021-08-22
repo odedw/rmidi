@@ -1,5 +1,5 @@
 import WebMidi, { Output as MidiOutput } from "webmidi";
-import init from "./initWebMidi";
+import { init } from "./initWebMidi";
 
 export class Output {
   midiOutput?: MidiOutput;
