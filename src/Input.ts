@@ -1,12 +1,13 @@
 import { init } from "./initWebMidi";
-import WebMidi, {
+import {
   Input as MidiInput,
   InputEventNoteon,
   IMidiChannel,
   InputEventControlchange,
   InputEventClock,
   InputEventNoteoff,
-} from "webmidi";
+  WebMidi,
+} from "../node_modules/webmidi/dist/esm/webmidi.esm.min.js";
 import { Observable, Subscription, Subject } from "rxjs";
 import { filter, bufferCount, pairwise, map } from "rxjs/operators";
 import { isMatch } from "./MidiUtils";

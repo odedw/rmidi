@@ -1,4 +1,4 @@
-import WebMidi, { Output as MidiOutput } from "webmidi";
+import { WebMidi, Output as MidiOutput } from "../node_modules/webmidi/dist/esm/webmidi.esm.min.js";
 import { init } from "./initWebMidi";
 
 export class Output {
@@ -12,17 +12,17 @@ export class Output {
     return new Output(name);
   }
 
-  sendNote() {
-    this.midiOutput?.playNote("C4", 1, {
-      // duration: 200,
-    });
-  }
+  // sendNote() {
+  //   this.midiOutput?.playNote("C4", 1, {
+  //     // duration: 200,
+  //   });
+  // }
 
-  noteOff() {
-    this.midiOutput?.stopNote("C4", 1);
-  }
+  // noteOff() {
+  //   this.midiOutput?.stopNote("C4", 1);
+  // }
   panic() {
     this.midiOutput?.sendReset();
-    this.midiOutput?.stopNote("C4");
+    // this.midiOutput?.stopNote("C4");
   }
 }

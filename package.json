@@ -1,6 +1,6 @@
 {
   "name": "rmidi",
-  "version": "1.0.10",
+  "version": "2.0.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "description": "A web MIDI utility package using rx.",
@@ -9,7 +9,7 @@
     "url": "https://github.com/odedw/rmidi.git"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "npx esbuild src/index.ts --bundle --outfile=rmidi.js --target=chrome58",
     "prepublishOnly": "npm run build && npm version patch"
   },
   "author": "",
@@ -17,7 +17,7 @@
   "dependencies": {
     "rxjs": "^6.6.3",
     "typescript": "^4.1.3",
-    "webmidi": "^2.5.1"
+    "webmidi": "^3.1.5"
   },
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.1"

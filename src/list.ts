@@ -1,5 +1,5 @@
 import { init } from "./initWebMidi";
-import WebMidi from "webmidi";
+import { WebMidi } from "../node_modules/webmidi/dist/esm/webmidi.esm.min.js";
 
 export function listOutputs() {
   init().then(() => {

@@ -1,4 +1,4 @@
-import WebMidi from "webmidi";
+import { WebMidi } from "../node_modules/webmidi/dist/esm/webmidi.esm.min.js";
 
 let initialized = false;
 export function init(): Promise<void> {
